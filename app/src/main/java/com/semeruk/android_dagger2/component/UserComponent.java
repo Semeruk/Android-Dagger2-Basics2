@@ -6,6 +6,9 @@ import com.semeruk.android_dagger2.scope.UserScope;
 
 import dagger.Component;
 
+/**
+ * Child component that is tied to when a user is signed-in
+ */
 // Two dependent components cannot share the same scope.
 // For instance, two components cannot both be scoped as @Singleton.
 // Dependent components need to define their own scope.
@@ -16,3 +19,5 @@ public interface UserComponent {
 
     void inject(MainActivity activity);
 }
+// Dependent components like this require the parent component to explicitly list out
+// what dependencies can be injected downstream.

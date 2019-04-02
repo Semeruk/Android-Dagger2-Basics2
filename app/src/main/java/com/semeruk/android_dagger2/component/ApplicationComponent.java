@@ -13,6 +13,9 @@ import dagger.Component;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
+/**
+ * Parent component
+ */
 @Singleton
 @Component(modules = {
         ApplicationModule.class, DataModule.class, NetworkModule.class
