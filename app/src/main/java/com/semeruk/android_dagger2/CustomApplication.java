@@ -4,11 +4,14 @@ import android.app.Application;
 
 import com.semeruk.android_dagger2.component.ApplicationComponent;
 import com.semeruk.android_dagger2.component.DaggerApplicationComponent;
+import com.semeruk.android_dagger2.component.DaggerUserComponent;
+import com.semeruk.android_dagger2.component.UserComponent;
 import com.semeruk.android_dagger2.module.ApplicationModule;
 
 public class CustomApplication extends Application {
 
     private ApplicationComponent mApplicationComponent;
+    private UserComponent mUserComponent;
 
     @Override
     public void onCreate() {
@@ -23,9 +26,18 @@ public class CustomApplication extends Application {
         // If a Dagger 2 component does not have any constructor arguments for any of its modules,
         // then we can use .create() as a shortcut instead:
         // mAppComponent = com.codepath.dagger.components.DaggerAppComponent.create();
+
+        // Pass ApplicationComponent into the UserComponent Dagger Builder
+        mUserComponent = DaggerUserComponent.builder()
+                .applicationComponent(mApplicationComponent)
+                .build();
     }
 
     public ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
+    }
+
+    public UserComponent getUserComponent() {
+        return mUserComponent;
     }
 }
