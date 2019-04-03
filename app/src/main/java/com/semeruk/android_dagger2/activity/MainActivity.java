@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.semeruk.android_dagger2.CustomApplication;
 import com.semeruk.android_dagger2.R;
+import com.semeruk.android_dagger2.component.DaggerUserComponent;
+import com.semeruk.android_dagger2.component.UserComponent;
 import com.semeruk.android_dagger2.model.Repository;
 import com.semeruk.android_dagger2.module.GitHubModule;
 
@@ -21,6 +23,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     // Bind views
     @BindView(R.id.tv_response)
     TextView tvResponse;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +51,17 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-
-                executeRequest(view);
-            }
-
-        });
+        // Pass ApplicationComponent into the UserComponent Dagger Builder
+        UserComponent mUserComponent = DaggerUserComponent.builder()
+                .applicationComponent(((CustomApplication) getApplication()).getApplicationComponent())
+                .build();
 
         // Cast to our extended application class to get the component
-        ((CustomApplication) getApplication()).getUserComponent().inject(this);
+        mUserComponent.inject(this);
     }
 
-    private void executeRequest(View view) {
+    @OnClick(R.id.fab)
+    public void execRequest(View view) {
         Call<List<Repository>> call = mGitHubApiInterface.getRepository("codepath");
         call.enqueue(new Callback<List<Repository>>() {
             @Override

@@ -4,14 +4,16 @@ import android.app.Application;
 
 import com.semeruk.android_dagger2.component.ApplicationComponent;
 import com.semeruk.android_dagger2.component.DaggerApplicationComponent;
-import com.semeruk.android_dagger2.component.DaggerUserComponent;
-import com.semeruk.android_dagger2.component.UserComponent;
 import com.semeruk.android_dagger2.module.ApplicationModule;
 
 public class CustomApplication extends Application {
 
     private ApplicationComponent mApplicationComponent;
-    private UserComponent mUserComponent;
+
+    /**
+     * Alternative variant of building a child component from Application class
+     */
+    /*private UserComponent mUserComponent;*/
 
     @Override
     public void onCreate() {
@@ -27,17 +29,23 @@ public class CustomApplication extends Application {
         // then we can use .create() as a shortcut instead:
         // mAppComponent = com.codepath.dagger.components.DaggerAppComponent.create();
 
-        // Pass ApplicationComponent into the UserComponent Dagger Builder
+        /**
+         * Alternative variant of building a child component
+         */
+        /*// Pass ApplicationComponent into the UserComponent Dagger Builder
         mUserComponent = DaggerUserComponent.builder()
                 .applicationComponent(mApplicationComponent)
-                .build();
+                .build();*/
     }
 
     public ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
     }
 
-    public UserComponent getUserComponent() {
+    /**
+     * Alternative variant of building a child component
+     */
+    /*public UserComponent getUserComponent() {
         return mUserComponent;
-    }
+    }*/
 }
