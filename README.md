@@ -1,4 +1,3 @@
-# Android-Dagger2-DependentComponents
+# Dagger2 with Dependent Components approach
 
-Here I'm using Dagger2 with Dependent Components approach.
 ![dagger2 sketch](https://github.com/Semeruk/Android-Dagger2-Basics2/blob/master/sketch.jpg)
