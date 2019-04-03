@@ -30,7 +30,7 @@ public class CustomApplication extends Application {
         // mAppComponent = com.codepath.dagger.components.DaggerAppComponent.create();
 
         /**
-         * Alternative variant of building a child component
+         * Alternative variant of building a child component from Application class
          */
         /*// Pass ApplicationComponent into the UserComponent Dagger Builder
         mUserComponent = DaggerUserComponent.builder()
@@ -43,7 +43,7 @@ public class CustomApplication extends Application {
     }
 
     /**
-     * Alternative variant of building a child component
+     * Alternative variant of building a child component from Application class
      */
     /*public UserComponent getUserComponent() {
         return mUserComponent;
