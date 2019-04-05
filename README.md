@@ -6,4 +6,4 @@ Components that do not need to remain in memory all the time (i.e. components th
 
 This project consists of one dependent component (child) and a dependency component (parent).
 
-![dagger2 sketch](https://github.com/Semeruk/Android-Dagger2-Basics2/blob/master/diagram.jpg)
+![dagger2 sketch](https://github.com/Semeruk/Android-Dagger2-Basics2/blob/master/diagram_dependent_components.jpg)
